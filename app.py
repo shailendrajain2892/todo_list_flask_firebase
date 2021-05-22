@@ -58,19 +58,19 @@ def read():
     except Exception as e:
         return f"An Error Occured: {e}"
 
-@app.route('/update', methods=['GET', 'POST', 'PUT'])
-def update():
-    """
-        update() : Update document in Firestore collection with request body
-        Ensure you pass a custom ID as part of json body in post request
-        e.g. json={'id': '1', 'title': 'Write a blog post today'}
-    """
-    try:
-        id = request.json['id']
-        todo_ref.document(id).update(request.json)
-        return redirect("/")
-    except Exception as e:
-        return f"An Error Occured: {e}"
+# @app.route('/update', methods=['GET', 'POST', 'PUT'])
+# def update():
+#     """
+#         update() : Update document in Firestore collection with request body
+#         Ensure you pass a custom ID as part of json body in post request
+#         e.g. json={'id': '1', 'title': 'Write a blog post today'}
+#     """
+#     try:
+#         id = request.form['title']
+#         todo_ref.document(id).update(request.json)
+#         return redirect("/")
+#     except Exception as e:
+#         return f"An Error Occured: {e}"
 
 @app.route('/delete', methods=['GET', 'DELETE'])
 def delete():
@@ -113,6 +113,7 @@ def index():
 
 
 
-port = int(os.environ.get('PORT', 8080))
+
 if __name__ == '__main__':
-    app.run(debug=True, threaded=True, host='0.0.0.0', port=port)
+    port = int(os.environ.get('PORT', 5000))
+    app.run( threaded=True, host='0.0.0.0', port=port)
