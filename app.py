@@ -8,11 +8,15 @@ import json
 import base64
 import uuid
 from werkzeug.utils import redirect
+from dotenv import load_dotenv
+from waitress import serve
 
-# FIREBASE_SERVICE_KEY = json.loads(base64.b64decode(os.environ['FIREBASE_SERVICE_KEY']))
+load_dotenv()
+
+FIREBASE_SERVICE_KEY = json.loads(base64.b64decode(os.environ['FIREBASE_SERVICE_KEY']))
 
 app = Flask(__name__)# Initialize Firestore DB
-cred = credentials.Certificate('key.json')
+cred = credentials.Certificate(FIREBASE_SERVICE_KEY)
 default_app = initialize_app(cred)
 db = firestore.client()
 todo_ref = db.collection('todos')
@@ -116,4 +120,5 @@ def index():
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
+    # serve(app, host='0.0.0.0', port=port)
     app.run( threaded=True, host='0.0.0.0', port=port)
