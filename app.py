@@ -8,10 +8,10 @@ import json
 import base64
 import uuid
 from werkzeug.utils import redirect
-# from dotenv import load_dotenv
+from dotenv import load_dotenv
 # from waitress import serve
 
-# load_dotenv()
+load_dotenv()
 
 FIREBASE_SERVICE_KEY = json.loads(base64.b64decode(os.environ['FIREBASE_SERVICE_KEY']))
 
