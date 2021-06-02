@@ -1,4 +1,14 @@
-<form action="/" method="POST">
+<script>
+  function validateForm() {
+    var x = document.forms["todolist"]["title"].value;
+    if (x == "") {
+      alert("Value must be filled out");
+      return false;
+    }
+  }
+  </script>
+
+<form name="todolist" action="/" method="POST" onsubmit="return validateForm()" >
     <div class="form-row">
       <div class="col-sm-10 my-1">
         <label for="newStuff" class="sr-only">New Stuff:</label>

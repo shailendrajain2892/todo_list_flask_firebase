@@ -3,7 +3,7 @@
 
 {% block content %}
 <div class="container">
-    <h1 class="my-4">Flask CRUD</h1>
+    <h1 class="my-4">Todo List</h1>
     {% if todos|length < 1 %}
     <p>There is nothing to buy for now.</p>
     {% else %}
@@ -11,7 +11,7 @@
       <thead>
         <tr>
           <th>todos</th>
-          <th>status</th>
+          <!-- <th>status</th> -->
           <!-- <th>Completed</th> -->
         </tr>
       </thead>
@@ -20,7 +20,7 @@
         <tr>
           <!-- <td>{{ todo.id }}</td> -->
           <td>{{ todo.title }}</a></td>
-          <td>{{todo.status}}</td>
+          <!-- <td>{{todo.status}}</td> -->
           <td class="text-right"><a class="btn btn-danger btn-sm" href="/delete?id={{ todo.id }}" role="button">Delete</a></td>
         </tr>
         {% endfor %}
